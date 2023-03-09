@@ -125,12 +125,14 @@ public class Tests
     public void LoanSpeed()
     {
         RewindStock rewind = new RewindStock();
+        RewindStore store = new RewindStore(rewind);
+       
         for (int i = 0; i < 3; i++)
         {
             rewind.Add("Speed", "Action", 1994);
         }
             Assert.That(rewind.GetTotal(), Is.EqualTo(3));
-            rewind.LoanMovie("Speed", "Action", 1994);
-
+            store.LoanMovie("Speed", "Action", 1994);
+            Assert.That(rewind.GetTotal(), Is.EqualTo(2));
     }
 }
